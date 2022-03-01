@@ -38,7 +38,7 @@ class QueueListenerHandler(QueueHandler):
         super().__init__(queue)
         handlers = _resolve_handlers(handlers)
         self._listener = QueueListener(
-            self.queue,
+            queue,
             *handlers,
             respect_handler_level=respect_handler_level)
         if auto_run:
