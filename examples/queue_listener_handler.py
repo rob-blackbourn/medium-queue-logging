@@ -9,7 +9,18 @@ def _resolve_handlers(l):
         return l
 
     # Indexing the list performs the evaluation.
-    return [l[i] for i in range(len(l))]
+    resolved_handlers = []
+    for i in range(len(l)):
+        handler = l[i]
+        if isinstance(handler, dict) and handler.get('class') == 'logging.StreamHandler':
+            # Create the StreamHandler manually
+            stream_handler = logging.StreamHandler(stream=handler['stream'])
+            stream_handler.setLevel(handler.get('level', logging.NOTSET))
+            if 'formatter' in handler:
+                stream_handler.setFormatter(handler['formatter'])
+            handler = stream_handler
+        resolved_handlers.append(handler)
+    return resolved_handlers
 
 
 def _resolve_queue(q):
