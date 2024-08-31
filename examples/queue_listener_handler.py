@@ -1,3 +1,5 @@
+"""A queue listener/handler for Python >=3.8, <=3.11"""
+
 from logging.config import ConvertingList, ConvertingDict, valid_ident
 from logging.handlers import QueueHandler, QueueListener
 from queue import Queue

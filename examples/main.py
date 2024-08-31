@@ -1,3 +1,11 @@
+"""An example of configuring the logging queue handler.
+
+This is believed to work for Python versions >=3.8, <=3.11
+
+See `main_3_12.py` for version 3.12, as support for configuration was added
+to python in this version.
+"""
+
 import logging
 import logging.config
 import yaml
